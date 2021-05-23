@@ -29,6 +29,8 @@ if ($n!==0)
  $_SESSION['loginMessage']= 'Неверный логин/пароль';
  Header("Location: loginPage.php"); // если юзер не найден, то снова на страницу 
 }
+mysqli_close($connect);
+
 
 
 

@@ -12,7 +12,7 @@ mysqli_close($connect);
 ?>
 
 
-   
+<!--    
     <div class="slider">
        <div class="topItem">
            <h1>1</h1><h2>место</h2><a href="./desc.php"><img src="./img/1slider.png" alt=""><p>PUBG MOBILE</p></a>
@@ -23,11 +23,9 @@ mysqli_close($connect);
        <div class="topItem"> 
            <h1>3</h1><h2>место</h2><a href=""><img src="./img/3slider.png" alt=""><p>Last Day on Earth</p></a>
        </div>
-    </div>
+    </div> -->
 
-    <?php
-        require('telegram.php');
-    ?>
+
 
    <section>
    <div class="container">
@@ -64,7 +62,7 @@ mysqli_close($connect);
                  <img src='./img/games/$img' class='avatar' >
                  <h3>$title</h3>
                  <p>$type</p>
-                 <div class='appInfo'> <img src='./img/icons/android.png' class='androidIcon' alt=''><p>$version</p> </div>
+                 <div class='appInfo'><img src='./img/icons/android.png' class='androidIcon' alt=''><p>$version</p> </div>
                 </a>
             </div>";
                 if($i%5==0){
@@ -86,6 +84,9 @@ mysqli_close($connect);
     </div>
    </div>
    </section>
+   <?php
+        require('telegram.php');
+    ?>
 
    <?php
         require('footer.php');

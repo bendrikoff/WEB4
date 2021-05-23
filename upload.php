@@ -1,6 +1,9 @@
-<?php require('header.php') ?>
+<?php 
+session_start();
+require('header.php') ?>
 <div class="folderWeight">
 <?php 
+require("connectBD.php");
 $types = array('image/png', 'image/jpeg'); //Проверка расширения файла
 if (!in_array($_FILES['img']['type'], $types)||!in_array($_FILES['mark']['type'], $types)){
 header('Content-Type: text/html; charset=utf-8');
@@ -55,12 +58,22 @@ $color = imageColorAllocate($im, 255, 255, 255);
 imagecopy($im, $stamp, imagesx($im) - $sx - $marge_right, imagesy($im) - $sy - $marge_bottom, 0, 0, imagesx($stamp), imagesy($stamp));
 imagettftext($im, 12, 0, imagesx($im) - $sx - strlen($text)*5, imagesy($im) - $sy - 30, $color, $font, $text);
 // Вывод и освобождение памяти
-imagepng($im,"D:\openserver\domains\mobile-games.ru/watermark.png");
+$userName = $_SESSION['user_login'];
+$path = "userIMGS/".$userName ;
+if(!file_exists($path)){
+    mkdir("userIMGS/".$userName );
+    
+}
+$files = scandir($path);
+$idImage=max(array_keys($files));
+imagepng($im,$path."/".$idImage.".png");
+$query = "INSERT INTO images VALUES (NULL, '$userName','$idImage')";
+$query_selector = mysqli_query($connect, $query);
 imagedestroy($im);
 unlink($nameMark);
 unlink($nameIMG);
 
-echo('<a href="/watermark.png" target="_blank" style="color:blue">Ссылка на изображение</a>');
+echo('<a href="'.$path."/".$idImage.'.png" target="_blank" style="color:blue">Ссылка на изображение</a>');
 ?>
 </div>
 <?php require('footer.php') ?>

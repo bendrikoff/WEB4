@@ -39,6 +39,8 @@ $_SESSION['user_login']=$login;
 $_SESSION['email']=$email;
 $_SESSION['permission']="user";
 Header("Location: ../index.php");
+mysqli_close($connect);
+
 
 
 

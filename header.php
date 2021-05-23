@@ -43,7 +43,7 @@ mysqli_close($connect);
               } else{
                 echo('<a href="../login/loginPage.php">ВОЙТИ</a>');
               }
-              РЕГИСТРАЦИЯ
+              
               ?>
               
                   <ul class="sub-menu">

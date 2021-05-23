@@ -311,7 +311,8 @@ nav img{
     background: #fff;
     margin-right: 50px;
     width: 180px;
-    text-align: center
+    text-align: center;
+    
 }
 .paragraphItem{
     color: gray;
@@ -340,6 +341,7 @@ nav img{
 }
 .avatar {
     max-height: 123px;
+    max-width: 123px;
     padding-top: 30px;
     padding-bottom: 15px;
     transition: 0.2s linear;
